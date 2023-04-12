@@ -5,8 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.jsp_Customer_Management_Project.Admin;
+import com.jsp_Customer_Management_Project_connection.JdbcConnection;
 
 public class AdminDao {
 	// insertAdmin method
@@ -245,5 +247,36 @@ public class AdminDao {
 
 		return id2;
 	}
+	
+	// displayAdmin method
+	public void displayAdmin(){
+		
+		// call the getConnection method and store the connection in Connection
+		// interface
+		Connection connection = JdbcConnection.getConnection();
+		String select = "select * from admin ";
+		// create statement(PrepartedStatement)
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = connection.prepareStatement(select);
 
+			// execute query
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				System.out.println(resultSet.getString("adminName"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		// close connection
+		finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 }

@@ -65,7 +65,7 @@ public class OwnerDao {
 			// execute query
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-				ownerPassword = resultSet.getString("ownerPassword");
+				ownerPasscode = resultSet.getInt("ownerPasscode");
 			}
 			return ownerPasscode;
 		} catch (SQLException e) {

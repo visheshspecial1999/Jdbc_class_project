@@ -12,7 +12,7 @@ public class AdminController {
 		while (true) {
 
 			System.out.println(
-					"1.Login Admin with name and email\n2.Exit");
+					"1.Login Admin with name and email\n2.Display Admin\n3.Exit");
 			System.out.print("Enter your choice: ");
 			Scanner s = new Scanner(System.in);
 			int choice = s.nextInt();
@@ -27,8 +27,14 @@ public class AdminController {
 				adminService.loginAdmin(adminName, adminEmail);
 			}
 				break;
+				
+			case 2:{
+				AdminService adminService = new AdminService();
+				adminService.displayAdmin();
+				System.out.println();
+			}break;
 
-			case 2: {
+			case 3: {
 				System.out.println("System.............closed");
 				System.exit(choice);
 			}

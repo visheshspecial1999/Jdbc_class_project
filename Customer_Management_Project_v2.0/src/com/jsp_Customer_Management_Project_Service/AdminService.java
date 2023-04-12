@@ -105,4 +105,10 @@ public class AdminService {
 			System.out.println("invalid credintial please try again!!!");
 		}
 	}
+	
+	// displayAdmin method
+		public void displayAdmin(){
+			AdminDao dao=new AdminDao();
+			dao.displayAdmin();
+		}
 }
